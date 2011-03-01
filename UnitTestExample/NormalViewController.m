@@ -7,6 +7,7 @@
 //
 
 #import "NormalViewController.h"
+#import "ASIHTTPRequest.h"
 
 
 @implementation NormalViewController
@@ -64,6 +65,15 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"search button clicked");
+    // http://ws.spotify.com/search/1/track.json?q=
+    NSString *urlString = 
+    [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
+     [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setCompletionBlock:^ {
+        NSLog(@"%@", request.responseString);
+    }];
+    [request startAsynchronous];
 }
 @end
