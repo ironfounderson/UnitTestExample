@@ -98,5 +98,6 @@
         });
     }];
     [request startAsynchronous];
+    [searchBar resignFirstResponder];
 }
 @end
