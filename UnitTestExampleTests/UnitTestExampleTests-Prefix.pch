@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'UnitTestExampleTests' target in the 'UnitTestExampleTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
