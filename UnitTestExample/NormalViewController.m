@@ -37,6 +37,19 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
     cell.textLabel.text = [track objectForKey:@"name"];
+    
+    NSDictionary *album = [track objectForKey:@"album"];
+    NSString *albumName = [album objectForKey:@"name"];
+    
+    NSArray *artists = [track objectForKey:@"artists"];
+    if (artists.count == 0) {
+        cell.detailTextLabel.text = albumName;
+    }
+    else {
+        NSDictionary *artist = [artists objectAtIndex:0];
+        NSString *artistName = [artist objectForKey:@"name"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artistName, albumName];
+    }
 }
 
 #pragma mark - Table view data source
@@ -55,7 +68,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     [self configureCell:cell atIndexPath:indexPath];
