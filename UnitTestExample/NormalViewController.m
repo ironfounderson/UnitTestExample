@@ -14,9 +14,11 @@
 @implementation NormalViewController
 
 @synthesize tracks = tracks_;
+@synthesize notFoundMessage = notFoundMessage_;
 
 - (void)dealloc {
     [tracks_ release];
+    [notFoundMessage_ release];
     [super dealloc];
 }
 
@@ -52,6 +54,18 @@
     }
 }
 
+- (UITableViewCell *)notFoundCellAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"NotFoundCell";
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:CellIdentifier] autorelease];
+    }
+
+    cell.textLabel.text = self.notFoundMessage;
+    return cell;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -59,16 +73,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tracks.count;
+    return self.tracks.count > 0 ? self.tracks.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+    if (self.tracks.count == 0) {
+        return [self notFoundCellAtIndexPath:indexPath];
+    }
+    
+    static NSString *CellIdentifier = @"TrackCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     
     [self configureCell:cell atIndexPath:indexPath];
@@ -91,8 +110,14 @@
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     __block __typeof__(self) blockSelf = self;
     [request setCompletionBlock:^ {
-        NSDictionary *dict = [[CJSONDeserializer deserializer] deserializeAsDictionary:request.responseData error:nil];
-        self.tracks = [dict objectForKey:@"tracks"];
+        NSDictionary *dict = [[CJSONDeserializer deserializer] 
+                              deserializeAsDictionary:request.responseData 
+                              error:nil];
+        blockSelf.tracks = [dict objectForKey:@"tracks"];
+        if (blockSelf.tracks.count == 0) {
+            blockSelf.notFoundMessage = 
+            [NSString stringWithFormat:@"No tracks for '%@'", searchBar.text];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [blockSelf.tableView reloadData];
         });
