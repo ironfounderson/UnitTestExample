@@ -70,10 +70,6 @@
 
 #pragma mark - Search bar delegate
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"Current search text is: %@", searchText);
-}
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSString *urlString = 
     [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
