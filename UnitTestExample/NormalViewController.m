@@ -8,11 +8,15 @@
 
 #import "NormalViewController.h"
 #import "ASIHTTPRequest.h"
+#import "CJSONDeserializer.h"
 
 
 @implementation NormalViewController
 
+@synthesize tracks = tracks_;
+
 - (void)dealloc {
+    [tracks_ release];
     [super dealloc];
 }
 
@@ -30,6 +34,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
+    cell.textLabel.text = [track objectForKey:@"name"];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -37,7 +46,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.tracks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
@@ -49,6 +58,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
@@ -65,14 +75,18 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    // http://ws.spotify.com/search/1/track.json?q=
     NSString *urlString = 
     [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
      [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURL *url = [NSURL URLWithString:urlString];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    __block __typeof__(self) blockSelf = self;
     [request setCompletionBlock:^ {
-        NSLog(@"%@", request.responseString);
+        NSDictionary *dict = [[CJSONDeserializer deserializer] deserializeAsDictionary:request.responseData error:nil];
+        self.tracks = [dict objectForKey:@"tracks"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [blockSelf.tableView reloadData];
+        });
     }];
     [request startAsynchronous];
 }
