@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TestableViewController : UITableViewController {
+@interface TestableViewController : UITableViewController <UISearchBarDelegate> {
     
 }
+
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 
 @end
