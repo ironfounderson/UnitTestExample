@@ -12,8 +12,19 @@
 @implementation SpotifyTrackRequestTests
 
 - (void)testURLStringWithSearchTerm_SingleWord_ReturnsProperURLString {
-    SpotifyTrackRequest *trackRequest = [[[SpotifyTrackRequest alloc] init] autorelease];
+    SpotifyTrackRequest *trackRequest = 
+    [[[SpotifyTrackRequest alloc] init] autorelease];
     NSString *urlString = [trackRequest URLStringWithSearchTerm:@"Beatles"];
-    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=Beatles", urlString, nil);
+    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=Beatles", 
+                         urlString, nil);
 }
+
+- (void)testURLStringWithSearchTerm_WordsWithSpace_ReturnsProperURLString {
+    SpotifyTrackRequest *trackRequest = 
+    [[[SpotifyTrackRequest alloc] init] autorelease];
+    NSString *urlString = [trackRequest URLStringWithSearchTerm:@"The Beatles"];
+    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=The%20Beatles", 
+                         urlString, nil);
+}
+
 @end

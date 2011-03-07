@@ -12,7 +12,8 @@
 @implementation SpotifyTrackRequest
 
 - (NSString *)URLStringWithSearchTerm:(NSString *)searchTerm {
-    return nil;
+    return [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
+            [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end
