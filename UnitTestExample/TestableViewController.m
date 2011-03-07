@@ -10,11 +10,11 @@
 
 @implementation TestableViewController
 
-@synthesize searchBar;
+@synthesize searchBar = searchBar_;
 @synthesize trackRequest = trackRequest_;
 
 - (void)dealloc {
-    [searchBar release];
+    [searchBar_ release];
     [trackRequest_ release];
     [super dealloc];
 }

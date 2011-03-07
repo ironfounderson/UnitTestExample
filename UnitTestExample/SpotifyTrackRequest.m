@@ -7,17 +7,51 @@
 //
 
 #import "SpotifyTrackRequest.h"
-
+#import "SpotifyTrackURL.h"
+#import "SpotifyTrackParser.h"
+#import "ASIHTTPRequest.h"
 
 @implementation SpotifyTrackRequest
 
-- (NSString *)URLStringWithSearchTerm:(NSString *)searchTerm {
-    return [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
-            [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+@synthesize trackURL = trackURL_;
+@synthesize trackParser = trackParser_;
+
+- (void)dealloc {
+    [trackURL_ release];
+    [trackParser_ release];
+    [super dealloc];
 }
 
 - (void)searchForTracks:(NSString *)text {
+    NSURL *url = [NSURL URLWithString:[self.trackURL URLStringWithSearchTerm:text]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.delegate = self;
+    [request startAsynchronous];
+}
+
+
+#pragma mark - ASIHTTPRequests
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+    NSData *responseData = [request responseData];
     
 }
 
+- (void)requestFailed:(ASIHTTPRequest *)request {
+    NSError *error = [request error];
+}
+
+- (SpotifyTrackURL *)trackURL {
+    if (!trackURL_) {
+        trackURL_ = [[SpotifyTrackURL alloc] init];
+    }
+    return trackURL_;
+}
+
+- (SpotifyTrackParser *)trackParser {
+    if (!trackParser_) {
+        trackParser_ = [[SpotifyTrackParser alloc] init];
+    }
+    return trackParser_;
+}
 @end

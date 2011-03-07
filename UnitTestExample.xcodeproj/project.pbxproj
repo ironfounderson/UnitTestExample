@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E1182DC61324AA75003593EC /* SpotifyTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */; };
-		E1182DCB1324AA9B003593EC /* SpotifyTrackRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */; };
-		E1182DCC1324AB80003593EC /* SpotifyTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */; };
+		E1182DD01324B4FF003593EC /* beatles.json in Resources */ = {isa = PBXBuildFile; fileRef = E1182DCF1324B4FF003593EC /* beatles.json */; };
+		E1182DD41324B6BF003593EC /* SpotifyTrackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DD31324B6BF003593EC /* SpotifyTrackURL.m */; };
+		E1182DD51324B6BF003593EC /* SpotifyTrackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DD31324B6BF003593EC /* SpotifyTrackURL.m */; };
+		E1182DD81324B6D5003593EC /* SpotifyTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DD71324B6D5003593EC /* SpotifyTrackParser.m */; };
+		E1182DD91324B6D5003593EC /* SpotifyTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DD71324B6D5003593EC /* SpotifyTrackParser.m */; };
+		E1182DDC1324B6EB003593EC /* SpotifyTrackURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DDB1324B6EB003593EC /* SpotifyTrackURLTests.m */; };
+		E1182DDF1324B702003593EC /* SpotifyTrackParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DDE1324B702003593EC /* SpotifyTrackParserTests.m */; };
 		E12FA4B1131D731100026E22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B0131D731100026E22 /* UIKit.framework */; };
 		E12FA4B3131D731100026E22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B2131D731100026E22 /* Foundation.framework */; };
 		E12FA4B5131D731100026E22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B4131D731100026E22 /* CoreGraphics.framework */; };
@@ -43,6 +48,13 @@
 		E12FA536131D787900026E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA535131D787900026E22 /* CFNetwork.framework */; };
 		E12FA53A131D789F00026E22 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA539131D789F00026E22 /* SystemConfiguration.framework */; };
 		E12FA53C131D78A900026E22 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA53B131D78A900026E22 /* MobileCoreServices.framework */; };
+		E1CA4B461324BDD6004705CD /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA51F131D784900026E22 /* CJSONDeserializer.m */; };
+		E1CA4B481324BDE4004705CD /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA521131D784900026E22 /* CJSONScanner.m */; };
+		E1CA4B491324BDF9004705CD /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA513131D784900026E22 /* CDataScanner.m */; };
+		E1CA4B4A1324BDF9004705CD /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA516131D784900026E22 /* CDataScanner_Extensions.m */; };
+		E1CA4B4B1324BDF9004705CD /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA518131D784900026E22 /* NSCharacterSet_Extensions.m */; };
+		E1CA4B4C1324BDF9004705CD /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA51A131D784900026E22 /* NSDictionary_JSONExtensions.m */; };
+		E1CA4B4D1324BDF9004705CD /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA51C131D784900026E22 /* NSScanner_Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +70,13 @@
 /* Begin PBXFileReference section */
 		E1182DC41324AA75003593EC /* SpotifyTrackRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackRequest.h; sourceTree = "<group>"; };
 		E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackRequest.m; sourceTree = "<group>"; };
-		E1182DC91324AA9B003593EC /* SpotifyTrackRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackRequestTests.h; sourceTree = "<group>"; };
-		E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackRequestTests.m; sourceTree = "<group>"; };
+		E1182DCF1324B4FF003593EC /* beatles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beatles.json; sourceTree = "<group>"; };
+		E1182DD21324B6BF003593EC /* SpotifyTrackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackURL.h; sourceTree = "<group>"; };
+		E1182DD31324B6BF003593EC /* SpotifyTrackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackURL.m; sourceTree = "<group>"; };
+		E1182DD61324B6D5003593EC /* SpotifyTrackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackParser.h; sourceTree = "<group>"; };
+		E1182DD71324B6D5003593EC /* SpotifyTrackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackParser.m; sourceTree = "<group>"; };
+		E1182DDB1324B6EB003593EC /* SpotifyTrackURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackURLTests.m; sourceTree = "<group>"; };
+		E1182DDE1324B702003593EC /* SpotifyTrackParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackParserTests.m; sourceTree = "<group>"; };
 		E12FA4AC131D731100026E22 /* UnitTestExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTestExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12FA4B0131D731100026E22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E12FA4B2131D731100026E22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,8 +169,8 @@
 		E1182DC81324AA7E003593EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E1182DC91324AA9B003593EC /* SpotifyTrackRequestTests.h */,
-				E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */,
+				E1182DDB1324B6EB003593EC /* SpotifyTrackURLTests.m */,
+				E1182DDE1324B702003593EC /* SpotifyTrackParserTests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -232,6 +249,7 @@
 				E12FA4DE131D731200026E22 /* UnitTestExampleTests-Info.plist */,
 				E12FA4DF131D731200026E22 /* InfoPlist.strings */,
 				E12FA4E2131D731200026E22 /* UnitTestExampleTests-Prefix.pch */,
+				E1182DCF1324B4FF003593EC /* beatles.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -366,6 +384,10 @@
 			children = (
 				E1182DC41324AA75003593EC /* SpotifyTrackRequest.h */,
 				E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */,
+				E1182DD21324B6BF003593EC /* SpotifyTrackURL.h */,
+				E1182DD31324B6BF003593EC /* SpotifyTrackURL.m */,
+				E1182DD61324B6D5003593EC /* SpotifyTrackParser.h */,
+				E1182DD71324B6D5003593EC /* SpotifyTrackParser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -452,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12FA4E1131D731200026E22 /* InfoPlist.strings in Resources */,
+				E1182DD01324B4FF003593EC /* beatles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +520,8 @@
 				E12FA531131D784900026E22 /* CJSONScanner.m in Sources */,
 				E12FA532131D784900026E22 /* CJSONSerializer.m in Sources */,
 				E1182DC61324AA75003593EC /* SpotifyTrackRequest.m in Sources */,
+				E1182DD41324B6BF003593EC /* SpotifyTrackURL.m in Sources */,
+				E1182DD81324B6D5003593EC /* SpotifyTrackParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,8 +529,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1182DCC1324AB80003593EC /* SpotifyTrackRequest.m in Sources */,
-				E1182DCB1324AA9B003593EC /* SpotifyTrackRequestTests.m in Sources */,
+				E1CA4B491324BDF9004705CD /* CDataScanner.m in Sources */,
+				E1CA4B4A1324BDF9004705CD /* CDataScanner_Extensions.m in Sources */,
+				E1CA4B4B1324BDF9004705CD /* NSCharacterSet_Extensions.m in Sources */,
+				E1CA4B4C1324BDF9004705CD /* NSDictionary_JSONExtensions.m in Sources */,
+				E1CA4B4D1324BDF9004705CD /* NSScanner_Extensions.m in Sources */,
+				E1CA4B481324BDE4004705CD /* CJSONScanner.m in Sources */,
+				E1CA4B461324BDD6004705CD /* CJSONDeserializer.m in Sources */,
+				E1182DD51324B6BF003593EC /* SpotifyTrackURL.m in Sources */,
+				E1182DD91324B6D5003593EC /* SpotifyTrackParser.m in Sources */,
+				E1182DDC1324B6EB003593EC /* SpotifyTrackURLTests.m in Sources */,
+				E1182DDF1324B702003593EC /* SpotifyTrackParserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +592,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -572,8 +609,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -616,6 +656,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTestExampleTests/UnitTestExampleTests-Prefix.pch";
@@ -638,6 +679,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTestExampleTests/UnitTestExampleTests-Prefix.pch";

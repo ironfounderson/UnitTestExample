@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class SpotifyTrackURL;
+@class SpotifyTrackParser;
+
 @interface SpotifyTrackRequest : NSObject {
     
 }
 
-- (NSString *)URLStringWithSearchTerm:(NSString *)searchTerm;
+@property (nonatomic, retain) SpotifyTrackURL *trackURL;
+@property (nonatomic, retain) SpotifyTrackParser *trackParser;
+
 - (void)searchForTracks:(NSString *)text;
+
 @end
