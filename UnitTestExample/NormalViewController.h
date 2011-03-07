@@ -14,5 +14,4 @@
 }
 
 @property (nonatomic, retain) NSArray *tracks;
-@property (nonatomic, copy) NSString *notFoundMessage;
 @end

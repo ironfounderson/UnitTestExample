@@ -14,11 +14,9 @@
 @implementation NormalViewController
 
 @synthesize tracks = tracks_;
-@synthesize notFoundMessage = notFoundMessage_;
 
 - (void)dealloc {
     [tracks_ release];
-    [notFoundMessage_ release];
     [super dealloc];
 }
 
@@ -36,7 +34,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell 
+          atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
     cell.textLabel.text = [track objectForKey:@"name"];
     
@@ -44,28 +43,13 @@
     NSString *albumName = [album objectForKey:@"name"];
     
     NSArray *artists = [track objectForKey:@"artists"];
-    if (artists.count == 0) {
-        cell.detailTextLabel.text = albumName;
-    }
-    else {
-        NSDictionary *artist = [artists objectAtIndex:0];
-        NSString *artistName = [artist objectForKey:@"name"];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artistName, albumName];
-    }
+    NSDictionary *artist = [artists objectAtIndex:0];
+    NSString *artistName = [artist objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", 
+                                 artistName, albumName];
 }
 
-- (UITableViewCell *)notFoundCellAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"NotFoundCell";
-    
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:CellIdentifier] autorelease];
-    }
 
-    cell.textLabel.text = self.notFoundMessage;
-    return cell;
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -73,14 +57,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tracks.count > 0 ? self.tracks.count : 1;
+    return self.tracks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.tracks.count == 0) {
-        return [self notFoundCellAtIndexPath:indexPath];
-    }
     
     static NSString *CellIdentifier = @"TrackCell";
     
@@ -102,22 +83,41 @@
 
 #pragma mark - Search bar delegate
 
+/*
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *urlString = 
+    [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
+     [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.delegate = self;    
+    [request startAsynchronous];
+    [searchBar resignFirstResponder];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+    NSDictionary *dict = [[CJSONDeserializer deserializer] 
+                          deserializeAsDictionary:request.responseData 
+                          error:nil];
+    self.tracks = [dict objectForKey:@"tracks"];
+    [self.tableView reloadData];
+}
+*/
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSString *urlString = 
     [NSString stringWithFormat:@"http://ws.spotify.com/search/1/track.json?q=%@", 
      [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURL *url = [NSURL URLWithString:urlString];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.delegate = self;
+    
     __block __typeof__(self) blockSelf = self;
     [request setCompletionBlock:^ {
         NSDictionary *dict = [[CJSONDeserializer deserializer] 
                               deserializeAsDictionary:request.responseData 
                               error:nil];
         blockSelf.tracks = [dict objectForKey:@"tracks"];
-        if (blockSelf.tracks.count == 0) {
-            blockSelf.notFoundMessage = 
-            [NSString stringWithFormat:@"No tracks for '%@'", searchBar.text];
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [blockSelf.tableView reloadData];
         });
@@ -125,4 +125,5 @@
     [request startAsynchronous];
     [searchBar resignFirstResponder];
 }
+
 @end
