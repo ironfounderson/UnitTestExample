@@ -55,6 +55,8 @@
 		E1CA4B4B1324BDF9004705CD /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA518131D784900026E22 /* NSCharacterSet_Extensions.m */; };
 		E1CA4B4C1324BDF9004705CD /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA51A131D784900026E22 /* NSDictionary_JSONExtensions.m */; };
 		E1CA4B4D1324BDF9004705CD /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FA51C131D784900026E22 /* NSScanner_Extensions.m */; };
+		E1CA4B501324F0BE004705CD /* SpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CA4B4F1324F0BE004705CD /* SpotifyTrack.m */; };
+		E1CA4B511324F0BE004705CD /* SpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CA4B4F1324F0BE004705CD /* SpotifyTrack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,8 @@
 		E12FA537131D788100026E22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E12FA539131D789F00026E22 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E12FA53B131D78A900026E22 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E1CA4B4E1324F0BD004705CD /* SpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrack.h; sourceTree = "<group>"; };
+		E1CA4B4F1324F0BE004705CD /* SpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +392,8 @@
 				E1182DD31324B6BF003593EC /* SpotifyTrackURL.m */,
 				E1182DD61324B6D5003593EC /* SpotifyTrackParser.h */,
 				E1182DD71324B6D5003593EC /* SpotifyTrackParser.m */,
+				E1CA4B4E1324F0BD004705CD /* SpotifyTrack.h */,
+				E1CA4B4F1324F0BE004705CD /* SpotifyTrack.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				E1182DC61324AA75003593EC /* SpotifyTrackRequest.m in Sources */,
 				E1182DD41324B6BF003593EC /* SpotifyTrackURL.m in Sources */,
 				E1182DD81324B6D5003593EC /* SpotifyTrackParser.m in Sources */,
+				E1CA4B501324F0BE004705CD /* SpotifyTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +547,7 @@
 				E1182DD91324B6D5003593EC /* SpotifyTrackParser.m in Sources */,
 				E1182DDC1324B6EB003593EC /* SpotifyTrackURLTests.m in Sources */,
 				E1182DDF1324B702003593EC /* SpotifyTrackParserTests.m in Sources */,
+				E1CA4B511324F0BE004705CD /* SpotifyTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,15 +7,18 @@
 //
 
 #import "TestableViewController.h"
+#import "SpotifyTrack.h"
 
 @implementation TestableViewController
 
 @synthesize searchBar = searchBar_;
 @synthesize trackRequest = trackRequest_;
+@synthesize tracks = tracks_;
 
 - (void)dealloc {
     [searchBar_ release];
     [trackRequest_ release];
+    [tracks_ release];
     [super dealloc];
 }
 
@@ -43,12 +46,18 @@
 
 #pragma mark - Table view data source
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SpotifyTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    cell.textLabel.text = track.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artist, track.album];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.tracks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -57,10 +66,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
                                        reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -78,7 +88,15 @@
 - (SpotifyTrackRequest *)trackRequest {
     if (!trackRequest_) {
         trackRequest_ = [[SpotifyTrackRequest alloc] init];
+        trackRequest_.delegate = self;
     }
     return trackRequest_;
 }
+
+- (void)trackRequest:(SpotifyTrackRequest *)trackRequest foundTracks:(NSArray *)tracks {
+    [self.searchBar resignFirstResponder];
+    self.tracks = tracks;
+    [self.tableView reloadData];
+}
+
 @end

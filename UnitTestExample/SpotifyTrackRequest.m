@@ -15,6 +15,7 @@
 
 @synthesize trackURL = trackURL_;
 @synthesize trackParser = trackParser_;
+@synthesize delegate;
 
 - (void)dealloc {
     [trackURL_ release];
@@ -29,16 +30,16 @@
     [request startAsynchronous];
 }
 
-
 #pragma mark - ASIHTTPRequests
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
     NSData *responseData = [request responseData];
-    
+    NSArray *tracks = [self.trackParser tracksFromJSONData:responseData];
+    [self.delegate trackRequest:self foundTracks:tracks];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
-    NSError *error = [request error];
+    // Ignoring this for now
 }
 
 - (SpotifyTrackURL *)trackURL {
