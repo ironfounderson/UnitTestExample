@@ -8,12 +8,14 @@
 
 #import "TestableViewController.h"
 
-
 @implementation TestableViewController
 
 @synthesize searchBar;
+@synthesize trackRequest = trackRequest_;
 
 - (void)dealloc {
+    [searchBar release];
+    [trackRequest_ release];
     [super dealloc];
 }
 
@@ -70,6 +72,13 @@
 #pragma mark - Search bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.trackRequest searchForTracks:searchBar.text];
 }
 
+- (SpotifyTrackRequest *)trackRequest {
+    if (!trackRequest_) {
+        trackRequest_ = [[SpotifyTrackRequest alloc] init];
+    }
+    return trackRequest_;
+}
 @end

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface SpotifyTrackRequest : NSObject {
     
 }
 
 - (NSString *)URLStringWithSearchTerm:(NSString *)searchTerm;
+- (void)searchForTracks:(NSString *)text;
 @end

@@ -16,4 +16,8 @@
             [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
+- (void)searchForTracks:(NSString *)text {
+    
+}
+
 @end

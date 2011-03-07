@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class SpotifyTrackRequest;
+#import "SpotifyTrackRequest.h"
 
 @interface TestableViewController : UITableViewController <UISearchBarDelegate> {
     
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
+@property (retain) SpotifyTrackRequest *trackRequest;
 
 @end
