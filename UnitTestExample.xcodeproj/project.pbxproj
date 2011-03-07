@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1182DC61324AA75003593EC /* SpotifyTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */; };
+		E1182DCB1324AA9B003593EC /* SpotifyTrackRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */; };
+		E1182DCC1324AB80003593EC /* SpotifyTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */; };
 		E12FA4B1131D731100026E22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B0131D731100026E22 /* UIKit.framework */; };
 		E12FA4B3131D731100026E22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B2131D731100026E22 /* Foundation.framework */; };
 		E12FA4B5131D731100026E22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12FA4B4131D731100026E22 /* CoreGraphics.framework */; };
@@ -53,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E1182DC41324AA75003593EC /* SpotifyTrackRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackRequest.h; sourceTree = "<group>"; };
+		E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackRequest.m; sourceTree = "<group>"; };
+		E1182DC91324AA9B003593EC /* SpotifyTrackRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyTrackRequestTests.h; sourceTree = "<group>"; };
+		E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyTrackRequestTests.m; sourceTree = "<group>"; };
 		E12FA4AC131D731100026E22 /* UnitTestExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTestExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12FA4B0131D731100026E22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E12FA4B2131D731100026E22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1182DC81324AA7E003593EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1182DC91324AA9B003593EC /* SpotifyTrackRequestTests.h */,
+				E1182DCA1324AA9B003593EC /* SpotifyTrackRequestTests.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E12FA4A1131D731100026E22 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +220,7 @@
 		E12FA4DC131D731200026E22 /* UnitTestExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				E1182DC81324AA7E003593EC /* Models */,
 				E12FA4DD131D731200026E22 /* Supporting Files */,
 			);
 			path = UnitTestExampleTests;
@@ -231,6 +248,7 @@
 		E12FA4F0131D732F00026E22 /* Testable */ = {
 			isa = PBXGroup;
 			children = (
+				E145CACC1323E461003ECA12 /* Models */,
 				E12FA4F8131D742A00026E22 /* Controllers */,
 				E12FA4FE131D745000026E22 /* Xibs */,
 			);
@@ -341,6 +359,15 @@
 				E12FA524131D784900026E22 /* JSONRepresentation.h */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		E145CACC1323E461003ECA12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1182DC41324AA75003593EC /* SpotifyTrackRequest.h */,
+				E1182DC51324AA75003593EC /* SpotifyTrackRequest.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +496,7 @@
 				E12FA530131D784900026E22 /* CJSONDeserializer.m in Sources */,
 				E12FA531131D784900026E22 /* CJSONScanner.m in Sources */,
 				E12FA532131D784900026E22 /* CJSONSerializer.m in Sources */,
+				E1182DC61324AA75003593EC /* SpotifyTrackRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +504,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1182DCC1324AB80003593EC /* SpotifyTrackRequest.m in Sources */,
+				E1182DCB1324AA9B003593EC /* SpotifyTrackRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +671,7 @@
 				E12FA4EB131D731200026E22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E12FA4EC131D731200026E22 /* Build configuration list for PBXNativeTarget "UnitTestExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -649,6 +680,7 @@
 				E12FA4EE131D731200026E22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

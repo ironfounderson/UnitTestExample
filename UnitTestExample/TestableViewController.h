@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class SpotifyTrackRequest;
 
 @interface TestableViewController : UITableViewController <UISearchBarDelegate> {
     
