@@ -30,16 +30,10 @@
     [request startAsynchronous];
 }
 
-#pragma mark - ASIHTTPRequests
-
 - (void)requestFinished:(ASIHTTPRequest *)request {
     NSData *responseData = [request responseData];
     NSArray *tracks = [self.trackParser tracksFromJSONData:responseData];
     [self.delegate trackRequest:self foundTracks:tracks];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-    // Ignoring this for now
 }
 
 - (SpotifyTrackURL *)trackURL {

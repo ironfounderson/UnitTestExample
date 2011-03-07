@@ -46,10 +46,12 @@
 
 #pragma mark - Table view data source
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell 
+          atIndexPath:(NSIndexPath *)indexPath {
     SpotifyTrack *track = [self.tracks objectAtIndex:indexPath.row];
     cell.textLabel.text = track.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artist, track.album];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", 
+                                 track.artist, track.album];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -83,6 +85,12 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.trackRequest searchForTracks:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (void)trackRequest:(SpotifyTrackRequest *)trackRequest foundTracks:(NSArray *)tracks {
+    self.tracks = tracks;
+    [self.tableView reloadData];
 }
 
 - (SpotifyTrackRequest *)trackRequest {
@@ -93,10 +101,5 @@
     return trackRequest_;
 }
 
-- (void)trackRequest:(SpotifyTrackRequest *)trackRequest foundTracks:(NSArray *)tracks {
-    [self.searchBar resignFirstResponder];
-    self.tracks = tracks;
-    [self.tableView reloadData];
-}
 
 @end
