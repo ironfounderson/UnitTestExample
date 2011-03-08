@@ -219,9 +219,6 @@
 			children = (
 				E12FA4F0131D732F00026E22 /* Testable */,
 				E12FA4EF131D732500026E22 /* Normal */,
-				E12FA4BF131D731100026E22 /* UnitTestExampleAppDelegate.h */,
-				E12FA4C0131D731100026E22 /* UnitTestExampleAppDelegate.m */,
-				E12FA4C2131D731200026E22 /* MainWindow.xib */,
 				E12FA4B7131D731100026E22 /* Supporting Files */,
 			);
 			path = UnitTestExample;
@@ -230,6 +227,9 @@
 		E12FA4B7131D731100026E22 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E12FA4BF131D731100026E22 /* UnitTestExampleAppDelegate.h */,
+				E12FA4C0131D731100026E22 /* UnitTestExampleAppDelegate.m */,
+				E12FA4C2131D731200026E22 /* MainWindow.xib */,
 				E12FA4B8131D731100026E22 /* UnitTestExample-Info.plist */,
 				E12FA4B9131D731100026E22 /* InfoPlist.strings */,
 				E12FA4BC131D731100026E22 /* UnitTestExample-Prefix.pch */,
